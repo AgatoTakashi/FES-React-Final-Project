@@ -1,6 +1,6 @@
 import React from 'react'
 import hero from '../assets/hero-img.svg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SearchComponent from './SearchComponent'
 
 const Landing = () => {
   return (
@@ -10,14 +10,15 @@ const Landing = () => {
                 <h1>Looking for a movie?</h1>
                 <h2>Start your search now</h2>
             </div>
-            <div className="input-wrap">
+            {/* <div className="input-wrap">
                 <input type="text" id="userInput" placeholder="Type in a keyword(s)" />
                 <div class="search-wrap">
-                    <button onclick="submitInput()" id="submitButton">
+                    <button onClick="" id="submitButton">
                         <FontAwesomeIcon icon="search" />
                     </button>
                 </div>
-            </div>
+            </div> */}
+            <SearchComponent />
             <figure className="header__img--wrapper">
                 <img src={hero} alt="" />
             </figure>
