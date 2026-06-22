@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128&display=swap');
 
 * {
   margin: 0;
@@ -178,4 +179,79 @@ header {
 
 .search-container {
   padding: 24px;
+}
+
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card, .card-skeleton {
+    width: 300px;
+    border: 2px solid gray;
+    border-radius: 8px;
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card-skeleton {
+  padding: 0;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #e0e0e0 0%,
+    #f5f5f5 50%,
+    #e0e0e0 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-img {
+  height: 444px;
+  width: 100%;
+}
+
+.skeleton-title {
+  height: 32px;
+  margin: 16px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.movie__poster--img {
+    display: inline-block;
+}
+
+.movie__year, .movie__title, .movie__id {
+    text-align: center;
+}
+
+.movie__title, .movie__year {
+    padding: 8px;
+}
+
+.movie__title {
+  font-size: 24px;
+}
+
+.barcode {
+  font-family: "Libre Barcode 128", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
 }
