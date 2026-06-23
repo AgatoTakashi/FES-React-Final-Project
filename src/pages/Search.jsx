@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from 'react'
 import SearchComponent from '../components/SearchComponent'
 import axios from 'axios'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
 
 const Search = () => {
 
@@ -10,7 +12,7 @@ const Search = () => {
   useEffect(()=>{
     async function fetchResults() {
       const { data } = await axios.get(
-        "http://www.omdbapi.com/?apikey=c706a2e0&s&s=fast"
+        "https://www.omdbapi.com/?apikey=c706a2e0&s&s=fast"
       );
       // console.log(data.Search)
       setResults(data.Search);
@@ -20,6 +22,8 @@ const Search = () => {
   },[])
 
   return (
+    <>
+      <Nav />
     <section id="search">
         <div className="search-container">
             <h1>Search Movies</h1>
@@ -59,6 +63,8 @@ const Search = () => {
           }
         </div>
     </section>
+    <Footer />
+    </>
   )
 }
 
