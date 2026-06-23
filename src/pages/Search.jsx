@@ -4,20 +4,24 @@ import axios from 'axios'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Search = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const initialQuery = params.get("query") || "";
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState(initialQuery);
 
   async function fetchResults() {
+
+      setLoading(true);
       const { data } = await axios.get(
+        
         `https://www.omdbapi.com/?apikey=c706a2e0&s=${query}`
       );
  
@@ -26,8 +30,6 @@ const Search = () => {
     }
 
   useEffect(()=>{
-    
-
     fetchResults();
   },[])
 
@@ -78,12 +80,13 @@ const Search = () => {
             )
             : (
               results.slice(0,6).map((result, index) => (
-              <div className="card" key={index} >
-                  <img src={result.Poster} alt="Movie Poster" className="movie__poster--img" height="444" width="300" />
-                  <h2 className="movie__title">{result.Title}</h2>
-                  <h3 className="movie__year">{result.Year}</h3>
-                  <p className="movie__id barcode">{result.imdbID}</p>
-                </div>
+                <button onClick={() => navigate(`/Summary?title=${result.Title}`)} key={index}>
+              <div className="card">
+                <img src={result.Poster} alt="Movie Poster" className="movie__poster--img" height="444" width="300" />
+                <h2 className="movie__title">{result.Title}</h2>
+                <h3 className="movie__year">{result.Year}</h3>
+                <p className="movie__id barcode">{result.imdbID}</p>
+              </div></button>
             ))
             )
           }

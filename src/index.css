@@ -111,8 +111,8 @@ h2 {
   backdrop-filter: blur(5px);
 }
 
-#landing {
-  height: calc(100vh - 80px);
+#landing, #search, #summary {
+  min-height: calc(100vh - 80px);
 }
 
 .header__container {

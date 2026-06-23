@@ -1,37 +1,64 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
+import axios from 'axios'
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Summary = () => {
+
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const initialTitle = params.get("title") || "";
+    const [loading, setLoading] = useState(true);
+    const [results, setResults] = useState([]);
+    const [title, setTitle] = useState(initialTitle);
+
+    async function fetchSummary() {
+        setLoading(true);
+        const { data } = await axios.get(`https://www.omdbapi.com/?apikey=c706a2e0&t=${title}`);
+        
+        setResults(data);
+        setLoading(false);
+        console.log(data);
+    }
+
+    useEffect(()=>{
+        fetchSummary();
+    },[])
+
   return (
-    <section id='Summary'>
+    <>
+    <Nav />
+    <section id='summary'>
       <div className="row">
         <div className="summary__container">
             <div className="summary__left">
                 <figure className="summary__img--wrapper">
-                    <img src="https://m.media-amazon.com/images/M/MV5BZGRiMDE1NTMtMThmZS00YjE4LWI1ODQtNjRkZGZlOTg2MGE1XkEyXkFqcGc@._V1_SX300.jpg" alt="" className="summary__img" />
+                    <img src={results.Poster} alt="" className="summary__img" />
                 </figure>
             </div>
             <div className="summary__right">
                 <div className="summary__description">
                     <div className="summary__top">
-                        <h2 className="summary__title">The Fast and the Furious</h2>
+                        <h2 className="summary__title">{results.Title}</h2>
                         <div className="summary__title--under">
-                            <h4>2001</h4>
+                            <h4>{results.Year}</h4>
                             <h4>|</h4>
-                            <h4>PG-13</h4>
+                            <h4>{results.Rated}</h4>
                             <h4>|</h4>
-                            <h4>106 min</h4>
+                            <h4>{results.Runtime}</h4>
                         </div>
                     </div>
                     <div className="summary__middle">
                         <div className="summary__middle--upper">
-                            Action, Crime, Thriller
+                            {results.Genre}
                         </div>
-                        <p>Los Angeles police officer Brian O'Conner must decide where his loyalty really lies when he becomes enamored with the street racing world he has been sent undercover to end it.</p>
+                        <p>{results.Plot}</p>
                     </div>
                     <div className="summary__bottom">
-                        <h4>Directed by: Rob Cohen</h4>
-                        <h4>Written by: Ken Li, Gary Scott Thompson, Erik Bergquist</h4>
-                        <h4>Starring: Vin Diesel, Paul Walker, Michelle Rodriguez</h4>
+                        <h4>Directed by: {results.Director}</h4>
+                        <h4>Written by: {results.Writer}</h4>
+                        <h4>Starring: {results.Actors}</h4>
                         
                     </div>
                 </div>
@@ -39,6 +66,8 @@ const Summary = () => {
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   )
 }
 
