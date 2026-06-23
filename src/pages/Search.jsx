@@ -3,21 +3,31 @@ import SearchComponent from '../components/SearchComponent'
 import axios from 'axios'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useLocation } from "react-router-dom";
+
 
 const Search = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const initialQuery = params.get("query") || "";
 
-  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [results, setResults] = useState([]);
+  const [query, setQuery] = useState(initialQuery);
 
-  useEffect(()=>{
-    async function fetchResults() {
+  async function fetchResults() {
       const { data } = await axios.get(
-        "https://www.omdbapi.com/?apikey=c706a2e0&s&s=fast"
+        `https://www.omdbapi.com/?apikey=c706a2e0&s=${query}`
       );
-      // console.log(data.Search)
-      setResults(data.Search);
+ 
+      setResults(data.Search || []);
       setLoading(false);
     }
+
+  useEffect(()=>{
+    
+
     fetchResults();
   },[])
 
@@ -27,7 +37,23 @@ const Search = () => {
     <section id="search">
         <div className="search-container">
             <h1>Search Movies</h1>
-            <SearchComponent />
+            
+            <div className="input-wrap">
+              <input
+                  id="userInput"
+                  type="text"
+                  placeholder="Type in a keyword(s)"
+                  value={query}
+                  onChange={((e) => setQuery(e.target.value))}
+              />
+              <div className="search-wrap">
+                  <button id="submitButton" 
+                  onClick={fetchResults}
+                  >
+                      <FontAwesomeIcon icon="search" />
+                  </button>
+              </div>
+            </div>
             
             <div className="sort-container">
               <select id="filter" defaultValue="DEFAULT">
