@@ -10,14 +10,16 @@ const Summary = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const initialTitle = params.get("title") || "";
+    const initialYear = params.get("year") || "";
     const [loading, setLoading] = useState(true);
     const [results, setResults] = useState([]);
     const [title, setTitle] = useState(initialTitle);
+    const [year, setYear] = useState(initialYear);
     const genres = results.Genre?.split(",").map(g => g.trim());
 
     async function fetchSummary() {
         setLoading(true);
-        const { data } = await axios.get(`https://www.omdbapi.com/?apikey=c706a2e0&t=${title}`);
+        const { data } = await axios.get(`https://www.omdbapi.com/?apikey=c706a2e0&t=${title}&y=${year}`);
         
         setResults(data);
         setLoading(false);
