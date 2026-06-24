@@ -47,6 +47,11 @@ const Search = () => {
                   placeholder="Type in a keyword(s)"
                   value={query}
                   onChange={((e) => setQuery(e.target.value))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      fetchResults()
+                    }
+                  }}
               />
               <div className="search-wrap">
                   <button id="submitButton" 

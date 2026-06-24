@@ -19,7 +19,6 @@ const Summary = () => {
         
         setResults(data);
         setLoading(false);
-        console.log(data);
     }
 
     useEffect(()=>{

@@ -18,7 +18,13 @@ const Landing = () => {
             </div>
             <div className="input-wrap">
                 <input type="text" id="userInput" placeholder="Type in a keyword(s)" value={input}
-                        onChange={(e) => setInput(e.target.value)}/>
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            navigate(`/Search?query=${input}`)
+                        }
+                    }}
+                />
                 <div className="search-wrap">
                     <button id="submitButton" onClick={() => navigate(`/Search?query=${input}`)}>
                         <FontAwesomeIcon icon="search" />
