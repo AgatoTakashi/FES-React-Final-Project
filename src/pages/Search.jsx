@@ -91,7 +91,6 @@ const Search = () => {
           <div className="sort__container">
             <select 
               id="filter" 
-              defaultValue="DEFAULT"
               value={sortOption}
               onChange={(e) => setSortOption(e.target.value)}
             >

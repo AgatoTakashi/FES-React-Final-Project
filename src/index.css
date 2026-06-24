@@ -440,3 +440,62 @@ footer {
     padding: 40px;
   }
 }
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav__links {
+    display: none;
+  }
+}
+
+.hamburger svg {
+  color: white;
+  font-size: 28px;
+  background: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.nav__links {
+  display: flex;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, .87);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    justify-content: center;
+    z-index: 2;
+  }
+  .nav__list {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav__link {
+    font-size: 40px;
+    line-height: 2;
+  }
+
+  .nav__links.open {
+    display: flex;
+  }
+}

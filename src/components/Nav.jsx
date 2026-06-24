@@ -2,21 +2,28 @@ import React from 'react'
 import logo from '../assets/logo.png'
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
+import { useState } from 'react'
 
 const Nav = () => {
+    const [open, setOpen] = useState(false);
+
   return (
     <nav id="Nav">
         <div className="nav__container">
             <a href="/">
                 <img src={logo} alt="" className="logo" />
             </a>
-            <ul className="nav__links">
+            <ul className={`nav__links ${open ? "open" : ""}`}>
                 <li className="nav__list">
                     <Link to="/" className='nav__link'>Home</Link>
                     <Link to="/Search" className='nav__link'>Search</Link>
                     <Link to="/List" className='nav__link nav__link--list'>My List</Link>
                 </li>
             </ul>
+            <div className="hamburger" onClick={() => setOpen(!open)}>
+                {open? <FontAwesomeIcon icon={faX} />:<FontAwesomeIcon icon={faBars} /> }
+            </div>
         </div>
     </nav>
   )
