@@ -368,6 +368,8 @@ footer {
   padding-top: 16px;
   padding-bottom: 32px;
   border-bottom: 2px solid gray;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .summary__middle button {
@@ -433,11 +435,17 @@ footer {
   .plot {
     flex: 1;
   }
+  .card {
+    width: 100%;
+  }
 }
 
 @media (max-width: 430px) {
   .header__img--wrapper {
     padding: 40px;
+  }
+  .card {
+    width: 90%;
   }
 }
 

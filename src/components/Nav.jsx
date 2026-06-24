@@ -18,7 +18,7 @@ const Nav = () => {
                 <li className="nav__list">
                     <Link to="/" className='nav__link'>Home</Link>
                     <Link to="/Search" className='nav__link'>Search</Link>
-                    <Link to="/List" className='nav__link nav__link--list'>My List</Link>
+                    <div className="nav__link nav__link--list">My List</div>
                 </li>
             </ul>
             <div className="hamburger" onClick={() => setOpen(!open)}>

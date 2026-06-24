@@ -32,9 +32,11 @@ const Search = () => {
   }
 
   useEffect(() => {
-    fetchResults();
+    if (initialQuery.trim() !== "") {
+      fetchResults();
+    }
     window.scrollTo(0, 0)
-  }, [query])
+  }, [initialQuery])
 
   let sortedResults = [...results];
 

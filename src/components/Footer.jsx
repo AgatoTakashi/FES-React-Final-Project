@@ -14,7 +14,7 @@ const Footer = () => {
         <ul className='footer__links'>
           <Link to="/" className='footer__link'>Home</Link>
           <Link to="/Search" className='footer__link'>Search</Link>
-          <Link to="/List" className='footer__link nav__link--list'>My List</Link>      
+          <div className='footer__link nav__link--list'>My List</div>      
         </ul>
       </div>
       <div className="copyright__text">
