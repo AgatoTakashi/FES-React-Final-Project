@@ -34,7 +34,7 @@ const Search = () => {
   useEffect(() => {
     fetchResults();
     window.scrollTo(0, 0)
-  }, [])
+  }, [query])
 
   let sortedResults = [...results];
 
@@ -70,13 +70,17 @@ const Search = () => {
               onChange={((e) => setQuery(e.target.value))}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
+                  navigate(`/Search?query=${query}`);
                   fetchResults()
                 }
               }}
             />
             <div className="search-wrap">
               <button id="submitButton"
-                onClick={fetchResults}
+                onClick={() => {
+                  navigate(`/Search?query=${query}`);
+                  fetchResults();
+                }}
               >
                 <FontAwesomeIcon icon="search" />
               </button>
