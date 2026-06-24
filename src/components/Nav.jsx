@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../assets/logo.png'
 import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Nav = () => {
   return (
@@ -13,7 +14,7 @@ const Nav = () => {
                 <li className="nav__list">
                     <Link to="/" className='nav__link'>Home</Link>
                     <Link to="/Search" className='nav__link'>Search</Link>
-                    <Link to="/List" className='nav__link'>My List</Link>
+                    <Link to="/List" className='nav__link nav__link--list'>My List</Link>
                 </li>
             </ul>
         </div>

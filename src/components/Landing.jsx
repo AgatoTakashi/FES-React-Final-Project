@@ -1,6 +1,5 @@
 import React from 'react'
 import hero from '../assets/hero-img.svg'
-import SearchComponent from './SearchComponent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
