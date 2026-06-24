@@ -17,6 +17,8 @@ const Search = () => {
   const [results, setResults] = useState([]);
   const [query, setQuery] = useState(initialQuery);
 
+  const [sortOption, setSortOption] = useState("DEFAULT");
+
   async function fetchResults() {
 
     setLoading(true);
@@ -33,6 +35,24 @@ const Search = () => {
     fetchResults();
     window.scrollTo(0, 0)
   }, [])
+
+  let sortedResults = [...results];
+
+  if (sortOption === "A_TO_Z") {
+    sortedResults.sort((a, b) => a.Title.localeCompare(b.Title));
+  }
+
+  if (sortOption === "Z_TO_A") {
+    sortedResults.sort((a, b) => b.Title.localeCompare(a.Title));
+  }
+
+  if (sortOption === "NEW_TO_OLD") {
+    sortedResults.sort((a, b) => Number(b.Year) - Number(a.Year));
+  }
+
+  if (sortOption === "OLD_TO_NEW") {
+    sortedResults.sort((a, b) => Number(a.Year) - Number(b.Year));
+  }
 
   return (
     <>
@@ -69,7 +89,12 @@ const Search = () => {
 
         <div className="results-container">
           <div className="sort__container">
-            <select id="filter" defaultValue="DEFAULT">
+            <select 
+              id="filter" 
+              defaultValue="DEFAULT"
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+            >
               <option value="DEFAULT" disabled>Sort</option>
               <option value="A_TO_Z">Alphabetical A to Z</option>
               <option value="Z_TO_A">Alphabetical Z to A</option>
@@ -88,7 +113,7 @@ const Search = () => {
               )
               )
               : (
-                results.slice(0, 6).map((result, index) => (
+                sortedResults.slice(0, 6).map((result, index) => (
                   <button onClick={() => navigate(`/Summary?title=${result.Title}&year=${result.Year}`)} key={index}>
                     <div className="card">
                       <img src={result.Poster} alt="Movie Poster" 

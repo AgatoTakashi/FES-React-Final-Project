@@ -19,6 +19,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-image: url('/src/assets/ChatGPT\ Image\ Jun\ 24\,\ 2026\,\ 03_07_19\ AM.png');
+  background-attachment:  fixed;
 }
 
 nav {
@@ -342,8 +343,7 @@ footer {
 
 .summary__top {
   background: white;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding: 32px 8px;
   border-radius: 50px;
   margin-bottom: 8px;
 }
