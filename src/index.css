@@ -20,6 +20,7 @@ body {
   overflow-x: hidden;
   background-image: url('/src/assets/ChatGPT\ Image\ Jun\ 24\,\ 2026\,\ 03_07_19\ AM.png');
   background-attachment:  fixed;
+  background-size: contain;
 }
 
 nav {
