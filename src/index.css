@@ -316,6 +316,8 @@ footer {
 
 .summary__container {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .summary__left {
