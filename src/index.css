@@ -304,11 +304,11 @@ footer {
   color: gray;
 }
 
-#Summary {
+#summary {
   margin: 0 auto;
 }
 
-#Summary .row {
+#summary .row {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
