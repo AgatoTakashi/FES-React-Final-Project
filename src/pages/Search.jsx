@@ -119,7 +119,7 @@ const Search = () => {
               )
               : (
                 sortedResults.slice(0, 6).map((result, index) => (
-                  <button onClick={() => navigate(`/Summary?title=${result.Title}&year=${result.Year}`)} key={index}>
+                  <button onClick={() => navigate(`/Summary?id=${result.imdbID}`)} key={index}>
                     <div className="card">
                       <img src={result.Poster} alt="Movie Poster" 
                         className="movie__poster--img" 
