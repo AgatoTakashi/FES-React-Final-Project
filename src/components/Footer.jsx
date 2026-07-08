@@ -1,8 +1,11 @@
 import React from 'react'
 import logo from '../assets/logo.png'
 import { Link } from "react-router-dom"
+import { useState } from 'react'
+import List from './List'
 
-const Footer = () => {
+const Footer = ({openList, setOpenList}) => {
+
   return (
     <footer>
       <a href="/">
@@ -14,7 +17,9 @@ const Footer = () => {
         <ul className='footer__links'>
           <Link to="/" className='footer__link'>Home</Link>
           <Link to="/Search" className='footer__link'>Search</Link>
-          <div className='footer__link nav__link--list'>My List</div>      
+          <div className='footer__link' onClick={() => setOpenList(!openList)}>
+            My List
+          </div>    
         </ul>
       </div>
       <div className="copyright__text">

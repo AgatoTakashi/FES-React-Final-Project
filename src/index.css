@@ -108,8 +108,12 @@ h2 {
   text-decoration: underline;
 }
 
+.nav__link--list {
+  position: relative;
+}
+
 .nav__link--list:hover {
-  cursor: not-allowed;
+  text-decoration: underline;
 }
 
 #Nav {
@@ -134,7 +138,6 @@ h2 {
   flex-direction: column;
   justify-content: space-around;
   padding: 24px;
-  /* margin-top: 48px; */
 }
 
 .header__description {
@@ -210,6 +213,7 @@ h2 {
 
 .card, .card-skeleton {
     width: 300px;
+    height: 600px;
     border: 2px solid gray;
     border-radius: 8px;
     margin: 16px;
@@ -260,7 +264,10 @@ h2 {
 }
 
 .movie__poster--img {
-    display: inline-block;
+    display: block;
+    width: 100%;
+    height: 444px;
+    object-fit: cover;
 }
 
 .movie__year, .movie__title, .movie__id {
@@ -268,7 +275,7 @@ h2 {
 }
 
 .movie__title, .movie__year {
-    padding: 8px;
+    /* padding: 8px; */
 }
 
 .movie__title {
@@ -299,6 +306,10 @@ footer {
 
 .footer__link {
   color: white;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
 }
 
 .copyright__text {
@@ -388,7 +399,7 @@ footer {
 
 .summary__middle button:hover {
   transform: scale(1.03);
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
 }
 
 .plot {
@@ -511,4 +522,53 @@ footer {
   .nav__links.open {
     display: flex;
   }
+}
+
+#myList {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 430px;
+  background: white;
+  z-index: 100;
+  padding: 32px;
+}
+
+.list__title {
+  margin-bottom: 16px;
+}
+
+.close__list {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.list li:nth-of-type(odd) {
+  background: #f5f5f5;
+}
+
+.list__delete {
+  background: none;
+  border: none;
+}
+
+#myList p {
+  text-shadow: none;
+  font-weight: normal;
+  font-size: 16px;
 }

@@ -4,8 +4,9 @@ import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 import { useState } from 'react'
+import List from './List'
 
-const Nav = () => {
+const Nav = ({openList, setOpenList}) => {
     const [open, setOpen] = useState(false);
 
   return (
@@ -18,7 +19,9 @@ const Nav = () => {
                 <li className="nav__list">
                     <Link to="/" className='nav__link'>Home</Link>
                     <Link to="/Search" className='nav__link'>Search</Link>
-                    <div className="nav__link nav__link--list">My List</div>
+                    <div className="nav__link nav__link--list" onClick={() => setOpenList(!openList)}>
+                        <p>My List</p>
+                    </div>
                 </li>
             </ul>
             <div className="hamburger" onClick={() => setOpen(!open)}>

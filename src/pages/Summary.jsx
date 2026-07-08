@@ -5,17 +5,13 @@ import axios from 'axios'
 import { useLocation, useNavigate } from "react-router-dom";
 import imf from '../assets/ChatGPT Image Jun 24, 2026, 05_01_45 AM.png'
 
-const Summary = () => {
+const Summary = ({openList, setOpenList, myList, setMyList}) => {
 
     const location = useLocation();
     const params = new URLSearchParams(location.search);
-    // const initialTitle = params.get("title") || "";
-    // const initialYear = params.get("year") || "";
     const initialId = params.get("id") || "";
     const [loading, setLoading] = useState(true);
     const [results, setResults] = useState([]);
-    // const [title, setTitle] = useState(initialTitle);
-    // const [year, setYear] = useState(initialYear);
     const [id, setId] = useState(initialId);
     const genres = results.Genre?.split(",").map(g => g.trim());
 
@@ -34,7 +30,7 @@ const Summary = () => {
 
   return (
     <>
-        <Nav />
+        <Nav openList={openList} setOpenList={setOpenList} />
         <section id='summary'>
         <div className="row">
             <div className="summary__container">
@@ -79,7 +75,14 @@ const Summary = () => {
                             <div className="plot">
                                 <p>{results.Plot}</p>
                             </div>
-                            <button>Add to My List</button>
+                            <button onClick={() => {
+                                                    const exists = myList.some(item => item.id === results.imdbID);
+
+                                                    if (!exists) {
+                                                        setMyList(prev => [...prev, { title: results.Title, id: results.imdbID }]);
+                                                    }
+                                                    setOpenList(true);
+                                                }}>Add to My List</button>
                         </div>
                         <div className="summary__bottom">
                             <p><strong>Directed by: </strong>{results.Director}</p>
@@ -92,7 +95,7 @@ const Summary = () => {
             </div>
         </div>
         </section>
-        <Footer />
+        <Footer openList={openList} setOpenList={setOpenList} />
     </>
   )
 }

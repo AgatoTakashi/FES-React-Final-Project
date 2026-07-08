@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Landing from '../components/Landing'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import List from '../components/List'
 
-const Home = () => {
+const Home = ({openList, setOpenList, myList, setMyList}) => {
+
   return (
     <>
-        <Nav />
+        <Nav openList={openList} setOpenList={setOpenList} />
         <Landing />
-        <Footer />
+        <Footer openList={openList} setOpenList={setOpenList} />
     </>
   )
 }

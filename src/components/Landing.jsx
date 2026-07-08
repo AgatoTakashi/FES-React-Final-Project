@@ -30,7 +30,6 @@ const Landing = () => {
                     </button>
                 </div>
             </div>
-            {/* <SearchComponent /> */}
             <figure className="header__img--wrapper">
                 <img src={hero} alt="" />
             </figure>
