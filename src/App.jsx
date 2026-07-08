@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import { useState } from 'react'
 import List from './components/List'
 import Actors from './components/Actors'
+import Trailers from './pages/Trailers'
 
 const App = () => {
   const [openList, setOpenList] = useState(false);
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/Search' element={<Search openList={openList} setOpenList={setOpenList} myList={myList} />} />
         <Route path='/Summary' element={<Summary openList={openList} setOpenList={setOpenList} myList={myList} setMyList={setMyList} />} />
         <Route path='/Actors' element={<Actors />} />
+        <Route path="/Trailers" element={<Trailers />} />
       </Routes>
       {openList? ( <div className="backdrop" onClick={() => setOpenList(false)}>
         <List 

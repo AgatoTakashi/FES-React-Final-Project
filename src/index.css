@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
   background-image: url('/src/assets/ChatGPT\ Image\ Jun\ 24\,\ 2026\,\ 03_07_19\ AM.png');
   background-attachment:  fixed;
-  background-size: contain;
+  background-size: cover;
 }
 
 nav {
@@ -641,4 +641,36 @@ footer {
 
 .actor__name {
   text-align: center;
+}
+
+#trailers iframe {
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.back-to-summary {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: 300px;
+}
+
+.back-to-summary:hover {
+  background: #0056b3;
+}
+
+#trailers h2, #trailers p {
+  color: white;
+}
+
+#trailers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

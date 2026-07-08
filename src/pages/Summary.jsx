@@ -15,6 +15,7 @@ const Summary = ({openList, setOpenList, myList, setMyList}) => {
     const [results, setResults] = useState([]);
     const [id, setId] = useState(initialId);
     const genres = results.Genre?.split(",").map(g => g.trim());
+    const navigate = useNavigate();
 
     async function fetchSummary() {
         setLoading(true);
@@ -58,6 +59,7 @@ const Summary = ({openList, setOpenList, myList, setMyList}) => {
                                     e.target.onError = null;
                                     e.target.src = imf;
                                 }}
+                                onClick={() => navigate(`/Trailers?id=${results.imdbID}`)}
                             />
                         </figure>
                     }              
