@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 import { useLocation, useNavigate } from "react-router-dom";
 import imf from '../assets/ChatGPT Image Jun 24, 2026, 05_01_45 AM.png'
+import Actors from '../components/Actors';
 
 const Summary = ({openList, setOpenList, myList, setMyList}) => {
 
@@ -18,15 +19,20 @@ const Summary = ({openList, setOpenList, myList, setMyList}) => {
     async function fetchSummary() {
         setLoading(true);
         const { data } = await axios.get(`https://www.omdbapi.com/?apikey=c706a2e0&i=${id}`);
+        // const { data } = await axios.get(`https://xmdbapi.com/api/v1/movies/${id}?apiKey=mjX4f9pzXQ0LhEfvRJRIL3Vpmb0iJQ1oCXeWplhdBi0`);
         
         setResults(data);
         setLoading(false);
     }
 
+    useEffect(() => {
+        setId(initialId);
+        }, [initialId]);
+
     useEffect(()=>{
         fetchSummary();
         window.scrollTo(0, 0)
-    },[])
+    },[id])
 
     const exists = myList.some(item => item.id === results.imdbID);
 
@@ -96,6 +102,7 @@ const Summary = ({openList, setOpenList, myList, setMyList}) => {
             </div>
         </div>
         </section>
+        <Actors />
         <Footer openList={openList} setOpenList={setOpenList} />
     </>
   )

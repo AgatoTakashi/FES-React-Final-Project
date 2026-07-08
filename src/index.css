@@ -535,6 +535,16 @@ footer {
   padding: 32px;
 }
 
+#myList button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#myList button:hover {
+  text-decoration: underline;
+}
+
 .list__title {
   margin-bottom: 16px;
 }
@@ -580,6 +590,7 @@ footer {
   background: red;
   color: white;
   font-size: 12px;
+  text-shadow: none;
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -594,4 +605,40 @@ footer {
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 99;
+}
+
+#actors {
+  background: white;
+  height: 600px;
+}
+
+#actors .row {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+#actors h3 {
+  padding-top: 32px;
+  padding-bottom: 8px;
+}
+
+.profiles {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.actor__card {
+  padding: 16px;
+}
+
+.img__actor {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+.actor__name {
+  text-align: center;
 }
