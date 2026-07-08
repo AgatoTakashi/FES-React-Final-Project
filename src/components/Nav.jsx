@@ -6,7 +6,7 @@ import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 import { useState } from 'react'
 import List from './List'
 
-const Nav = ({openList, setOpenList}) => {
+const Nav = ({openList, setOpenList, myList}) => {
     const [open, setOpen] = useState(false);
 
   return (
@@ -19,8 +19,11 @@ const Nav = ({openList, setOpenList}) => {
                 <li className="nav__list">
                     <Link to="/" className='nav__link'>Home</Link>
                     <Link to="/Search" className='nav__link'>Search</Link>
-                    <div className="nav__link nav__link--list" onClick={() => setOpenList(!openList)}>
+                    <div className="nav__link nav__link--list" onClick={() => {setOpenList(!openList); setOpen(!open)}}>
                         <p>My List</p>
+                        {Array.isArray(myList) && myList.length > 0 && (
+                            <span className="list__counter">{myList.length}</span>
+                            )}
                     </div>
                 </li>
             </ul>

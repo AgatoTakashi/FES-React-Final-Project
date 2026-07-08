@@ -8,7 +8,7 @@ const Home = ({openList, setOpenList, myList, setMyList}) => {
 
   return (
     <>
-        <Nav openList={openList} setOpenList={setOpenList} />
+        <Nav openList={openList} setOpenList={setOpenList} myList={myList} />
         <Landing />
         <Footer openList={openList} setOpenList={setOpenList} />
     </>

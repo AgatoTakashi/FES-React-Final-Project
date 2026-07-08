@@ -15,17 +15,18 @@ const App = () => {
 
     <>
       <Routes>
-        <Route path='/' exact element={<Home openList={openList} setOpenList={setOpenList} />} />
-        <Route path='/Search' element={<Search openList={openList} setOpenList={setOpenList} />} />
+        <Route path='/' exact element={<Home openList={openList} setOpenList={setOpenList} myList={myList} />} />
+        <Route path='/Search' element={<Search openList={openList} setOpenList={setOpenList} myList={myList} />} />
         <Route path='/Summary' element={<Summary openList={openList} setOpenList={setOpenList} myList={myList} setMyList={setMyList} />} />
       </Routes>
-      {openList? ( 
-                    <List 
-                      openList={openList} 
-                      setOpenList={setOpenList}
-                      myList={myList}
-                      setMyList={setMyList}
-                    />
+      {openList? ( <div className="backdrop" onClick={() => setOpenList(false)}>
+        <List 
+          openList={openList} 
+          setOpenList={setOpenList}
+          myList={myList}
+          setMyList={setMyList}
+        />
+      </div>
                   ) : null}
     </>
   )

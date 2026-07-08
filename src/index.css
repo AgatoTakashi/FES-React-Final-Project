@@ -572,3 +572,26 @@ footer {
   font-weight: normal;
   font-size: 16px;
 }
+
+.list__counter {
+  position: absolute;
+  bottom: 5px;
+  right: -5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}

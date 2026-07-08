@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import imf from '../assets/ChatGPT Image Jun 24, 2026, 05_01_45 AM.png'
 
 
-const Search = ({openList, setOpenList, myList, setmyList}) => {
+const Search = ({openList, setOpenList, myList}) => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const initialQuery = params.get("query") || "";
@@ -58,7 +58,7 @@ const Search = ({openList, setOpenList, myList, setmyList}) => {
 
   return (
     <>
-      <Nav openList={openList} setOpenList={setOpenList} />
+      <Nav openList={openList} setOpenList={setOpenList} myList={myList} />
       <section id="search">
         <div className="search-container">
           <h1>Search Movies</h1>

@@ -28,9 +28,11 @@ const Summary = ({openList, setOpenList, myList, setMyList}) => {
         window.scrollTo(0, 0)
     },[])
 
+    const exists = myList.some(item => item.id === results.imdbID);
+
   return (
     <>
-        <Nav openList={openList} setOpenList={setOpenList} />
+        <Nav openList={openList} setOpenList={setOpenList} myList={myList} />
         <section id='summary'>
         <div className="row">
             <div className="summary__container">
@@ -76,13 +78,12 @@ const Summary = ({openList, setOpenList, myList, setMyList}) => {
                                 <p>{results.Plot}</p>
                             </div>
                             <button onClick={() => {
-                                                    const exists = myList.some(item => item.id === results.imdbID);
-
+                                                    
                                                     if (!exists) {
                                                         setMyList(prev => [...prev, { title: results.Title, id: results.imdbID }]);
                                                     }
                                                     setOpenList(true);
-                                                }}>Add to My List</button>
+                                                }}>{exists? "Added" : "Add to My List"}</button>
                         </div>
                         <div className="summary__bottom">
                             <p><strong>Directed by: </strong>{results.Director}</p>
