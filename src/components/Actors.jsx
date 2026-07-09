@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import axios from 'axios'
 // import { useLocation, useNavigate } from "react-router-dom";
 import imf from '../assets/ChatGPT Image Jun 24, 2026, 05_01_45 AM.png'
+import { useNavigate } from 'react-router-dom'
 
 const Actors = ({openList, setOpenList, myList, setMyList}) => {
 
@@ -14,6 +15,7 @@ const Actors = ({openList, setOpenList, myList, setMyList}) => {
     const [actors, setActors] = useState([]);
     const [actress, setActress] = useState([]);
     const [id, setId] = useState(initialId);
+    const navigate = useNavigate();
 
     async function fetchSummary() {
         setLoading(true);
@@ -39,7 +41,7 @@ const Actors = ({openList, setOpenList, myList, setMyList}) => {
                 <h3>Actors</h3>
                 <div className="profiles">
                     {actors.map((actor, id)=>(
-                        <div className="actor__card" key={id}>
+                        <div className="actor__card" key={id} onClick={() => navigate(`/Actor?id=${actor.id}`)}>
                             <img src={actor.profile_image? actor.profile_image : imf} className='img__actor'  />
                             <h4 className='actor__name'>{actor.name}</h4>
                         </div>
@@ -48,7 +50,7 @@ const Actors = ({openList, setOpenList, myList, setMyList}) => {
                 <h3>Actresses</h3>
                 <div className="profiles">
                     {actress.map((actress, index)=>(
-                        <div className="actor__card" key={index}>
+                        <div className="actor__card" key={index} onClick={() => navigate(`/Actor?id=${actress.id}`)}>
                             <img src={actress.profile_image? actress.profile_image : imf} className='img__actor' />
                             <h4 className='actor__name'>{actress.name}</h4>
                         </div>
