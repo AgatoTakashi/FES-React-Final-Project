@@ -754,3 +754,7 @@ footer {
   border-radius: 8px;
   flex-shrink: 0;
 }
+
+.img__actor:hover, .filmography__img:hover {
+  transform: scale(1.1);
+}
