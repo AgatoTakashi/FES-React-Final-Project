@@ -668,6 +668,13 @@ footer {
   margin-top: 16px;
 }
 
+#trailers {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
 .back-to-summary {
   display: inline-block;
   margin-bottom: 16px;
