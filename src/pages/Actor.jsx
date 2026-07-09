@@ -77,7 +77,6 @@ const Actor = () => {
 
                             <p><strong>{item.title}</strong> ({item.year})</p>
                             <p>{item.category}</p>
-                            {console.log(item.poster_url)}
 
                              {item.characters?.length > 0 && (
                                 <p>as {item.characters.join(", ")}</p>
