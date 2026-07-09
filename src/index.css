@@ -342,6 +342,25 @@ footer {
   overflow: hidden;
   min-width: 300px;
   /* min-height: 444px; */
+  position: relative;
+}
+
+.play__button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20000;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+  font-size: 64px;
+}
+
+.play__button path {
+  fill: red;
+}
+
+.summary__img--wrapper:hover .play__button path {
+  fill: green;
 }
 
 .summary__right {
@@ -637,6 +656,7 @@ footer {
   width: 128px;
   height: 128px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .actor__name {
@@ -662,7 +682,7 @@ footer {
 }
 
 .back-to-summary:hover {
-  background: #0056b3;
+  
 }
 
 #trailers h2, #trailers p {

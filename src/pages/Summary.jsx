@@ -5,6 +5,8 @@ import axios from 'axios'
 import { useLocation, useNavigate } from "react-router-dom";
 import imf from '../assets/ChatGPT Image Jun 24, 2026, 05_01_45 AM.png'
 import Actors from '../components/Actors';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
 const Summary = ({openList, setOpenList, myList, setMyList}) => {
 
@@ -53,14 +55,15 @@ const Summary = ({openList, setOpenList, myList, setMyList}) => {
                                 }}
                             />
                         </figure>
-                        : <figure className="summary__img--wrapper">
+                        : <figure className="summary__img--wrapper" onClick={() => navigate(`/Trailers?id=${results.imdbID}`)}>
                             <img src={results.Poster} alt="" className="summary__img" 
                                 onError={(e) => {
                                     e.target.onError = null;
                                     e.target.src = imf;
                                 }}
-                                onClick={() => navigate(`/Trailers?id=${results.imdbID}`)}
+                                
                             />
+                            <FontAwesomeIcon icon={faPlay} className='play__button' />
                         </figure>
                     }              
                 </div>

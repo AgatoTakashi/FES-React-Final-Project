@@ -44,6 +44,7 @@ const Trailers = () => {
     height="450"
     controls
     poster={trailer.thumbnail}
+    autoPlay="true"
   >
     <source src={trailer.url} type="video/mp4" />
   </video>
